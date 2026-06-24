@@ -1,5 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1926 880" fill="none" role="img" aria-label="Cart Transformation">
-<path d="M 1050 639 L 1051 644 L 1249 879 L 1925 879 L 1925 817 L 1271 817 L 1081 589 L 1077 591 Z" fill="currentColor"/>
-<path d="M 508 0 L 839 396 L 847 403 L 876 352 L 875 347 L 584 0 Z" fill="currentColor"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-80 -80 1800 1039" fill="none" role="img" aria-label="Cart Transformation">
+<defs>
+<filter id="dl" x="-30%" y="-30%" width="160%" height="160%"><feMorphology in="SourceAlpha" operator="dilate" radius="15"/></filter>
+<mask id="weave"><rect x="-80" y="-80" width="1800" height="1039" fill="white"/><path d="M 0 0 L 0 100 L 413 100 L 798 561 L 799 569 L 628 865 L 622 879 L 873 879 L 948 746 L 953 747 L 1063 879 L 1203 879 L 1202 875 L 1008 645 L 1008 639 L 1198 303 L 1251 205 L 1008 205 L 862 460 L 859 463 L 855 463 L 465 0 Z" fill="black" filter="url(#dl)"/></mask>
+</defs>
+<g mask="url(#weave)"><path d="M 1293.0 205 L 1413.3 205 L 1035.8 879 L 915.6 879 Z" fill="currentColor"/><path d="M 1293.0 205 L 1640 205 L 1640 310 L 1234.2 310 Z" fill="currentColor"/><path d="M 1144.6 470 L 1410 470 L 1410 575 L 1085.8 575 Z" fill="currentColor"/></g>
 <path d="M 0 0 L 0 100 L 413 100 L 798 561 L 799 569 L 628 865 L 622 879 L 873 879 L 948 746 L 953 747 L 1063 879 L 1203 879 L 1202 875 L 1008 645 L 1008 639 L 1198 303 L 1251 205 L 1008 205 L 862 460 L 859 463 L 855 463 L 465 0 Z" fill="#F15A25"/>
 </svg>
