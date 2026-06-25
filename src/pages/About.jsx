@@ -32,16 +32,16 @@ const team = [
     url: 'https://flowdaptor.ai/',
   },
   {
-    name: 'Sarah Nguyen',
-    role: 'Voluptas Aspernatur',
-    img: images.founder2,
-    bio: 'Laudantium totam em aperiam, eaque ipsa quae ab illo inventore.',
-  },
-  {
     name: 'Kevin Chua',
     role: 'Project Director',
-    img: images.founder3,
+    img: images.founder2,
     bio: '15+ years in technology programme management and digital transformation. Keeps complex AI automation engagements on track from scoping through production — with a particular focus on regulated industries and risk governance across Southeast Asia.',
+  },  
+  {
+    name: 'Sarah Nguyen',
+    role: 'eCommerce Lead',
+    img: images.founder3,
+    bio: 'Ten years building and operating e-commerce businesses from the merchant side. She knows what a broken checkout costs because she\'s lived it.',
   },
   {
     name: 'Anna',
