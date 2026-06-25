@@ -88,15 +88,7 @@ export default function Privacy() {
             <div>
               <h2 className="text-xl font-bold text-ink">6. Third-party services</h2>
               <p className="mt-2 text-slate-soft">
-                We use the following third-party services which may process data on our behalf:
-              </p>
-              <ul className="mt-2 list-disc space-y-1 pl-5 text-slate-soft">
-                <li><strong className="text-ink">Google Analytics</strong> — anonymised website analytics</li>
-                <li><strong className="text-ink">Formspree</strong> — contact form submission handling</li>
-              </ul>
-              <p className="mt-2 text-slate-soft">
-                Each service operates under its own privacy policy and data processing
-                agreements.
+                We do not currently use any third-party services that process data. However, this may change in the future.
               </p>
             </div>
 
