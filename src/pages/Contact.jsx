@@ -8,7 +8,16 @@ import SectionSeam from '../components/SectionSeam.jsx'
 import { site } from '../config/site.js'
 import { services } from '../data/services.js'
 
-const initial = { name: '', email: '', phone: '', store: '', service: '', message: '' }
+const initial = { name: '', email: '', phone: '', store: '', service: '', platform: '', revenue: '', message: '' }
+
+const platforms = ['WooCommerce', 'Shopify', 'Lazada', 'Shopee', 'SiteGiant', 'Other']
+const revenueBands = [
+  'Under S$10,000 / month',
+  'S$10,000 – S$50,000 / month',
+  'S$50,000 – S$200,000 / month',
+  'Over S$200,000 / month',
+  'Prefer not to say',
+]
 
 // Honeypot: a field real visitors never see or fill. send.php checks this
 // exact field name ($_POST['website']) and silently accepts (no error) if
@@ -44,6 +53,8 @@ export default function Contact() {
         email: form.email,
         company: form.store,
         interest: form.service,
+        platform: form.platform,
+        revenue: form.revenue,
         message: form.message,
         website: honeypot,
       })
@@ -89,8 +100,9 @@ export default function Contact() {
               Let's find your hidden revenue
             </h1>
             <p className="mt-5 max-w-2xl text-lg text-cloud-200/80">
-              Tell us about your store and we'll come back within one business day with a
-              free audit and a clear quote. Prefer to talk? Just call.
+              Tell us about your store and we'll come back within one business day to arrange
+              a 20-minute call — no sales pitch, just an honest look at where you're losing
+              sales and what to fix first. Prefer to talk now? Just call.
             </p>
           </Reveal>
         </div>
@@ -230,6 +242,44 @@ export default function Contact() {
                       <option value="Not sure">Not sure yet</option>
                     </select>
                   </div>
+                  <div>
+                    <label htmlFor="platform" className="mb-1.5 block text-sm font-medium text-ink">
+                      Your platform
+                    </label>
+                    <select
+                      id="platform"
+                      name="platform"
+                      value={form.platform}
+                      onChange={update}
+                      className={field}
+                    >
+                      <option value="">Select one…</option>
+                      {platforms.map((p) => (
+                        <option key={p} value={p}>
+                          {p}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="revenue" className="mb-1.5 block text-sm font-medium text-ink">
+                      Approximate monthly revenue
+                    </label>
+                    <select
+                      id="revenue"
+                      name="revenue"
+                      value={form.revenue}
+                      onChange={update}
+                      className={field}
+                    >
+                      <option value="">Select range…</option>
+                      {revenueBands.map((r) => (
+                        <option key={r} value={r}>
+                          {r}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                   <div className="sm:col-span-2">
                     <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-ink">
                       Tell us about your store *
@@ -325,6 +375,30 @@ export default function Contact() {
                   </div>
                 ))}
               </dl>
+            </div>
+            <div className="card">
+              <h3 className="flex items-center gap-2 font-display font-bold text-ink">
+                <CalendarCheck size={18} className="text-flame" /> What happens next
+              </h3>
+              <ol className="mt-3 space-y-3 text-sm text-slate-soft">
+                <li>
+                  <span className="font-semibold text-ink">Within 1 business day</span> — we
+                  reply to confirm a 20-minute call time that suits you.
+                </li>
+                <li>
+                  <span className="font-semibold text-ink">On the call</span> — we ask for read
+                  access to your analytics and look at your store live.
+                </li>
+                <li>
+                  <span className="font-semibold text-ink">Within 3–5 days</span> — you receive a
+                  clear, prioritised report showing where you're losing sales and what to fix
+                  first.
+                </li>
+                <li>
+                  <span className="font-semibold text-ink">Your choice</span> — act on the report
+                  yourself, or let us fix it. No pressure either way.
+                </li>
+              </ol>
             </div>
           </Reveal>
         </div>

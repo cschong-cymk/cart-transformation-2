@@ -16,17 +16,17 @@ const steps = [
   {
     icon: Search,
     title: 'Audit',
-    body: 'We dig into your analytics, recordings, and checkout to find exactly where buyers drop off.',
+    body: 'We dig into your analytics, session recordings, and checkout to find exactly where buyers drop off — and why. No guesswork, no generic advice.',
   },
   {
     icon: Wrench,
     title: 'Transform',
-    body: 'We fix the highest-impact leaks first — checkout, recovery flows, and funnel structure.',
+    body: 'We fix the highest-impact leaks first — checkout friction, recovery flows, and funnel gaps. You see results before the month is out.',
   },
   {
     icon: LineChart,
     title: 'Grow',
-    body: 'We measure the lift, then keep optimizing so your conversion rate compounds over time.',
+    body: 'We measure the lift, then keep optimizing. Most clients see positive ROI within 30 days — and from there it compounds.',
   },
 ]
 

@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: 'How fast will I see results?',
-    a: 'Checkout and recovery fixes often show measurable lift within the first 2–4 weeks. Larger funnel rebuilds compound over a quarter.',
+    a: 'Checkout and recovery fixes often show measurable lift within the first 2–4 weeks. Most clients hit positive ROI within 30 days, and larger funnel rebuilds compound over a quarter.',
   },
   {
     q: 'Are you based in Singapore?',

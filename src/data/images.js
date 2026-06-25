@@ -8,6 +8,8 @@ export const images = {
   checkout:   u('photo-1556742502-ec7c0e9f34b1'),           // cards / payment
   team:       u('photo-1522071820081-009f0129c71c', 1400),  // team collaborating
   founder:    'assets/FlowDaptor-Logo-Favicon.png',
+  csChong:    'assets/CS.jpeg', 
+  mengWee:    'assets/MW.jpeg',   
   founder2:   'assets/KC.png',
   founder3:   'assets/sa.png',
   founder4:   u('photo-1573497019940-1c28c88b4f3e', 900),   // professional portrait

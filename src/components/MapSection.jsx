@@ -60,15 +60,13 @@ export default function MapSection() {
               <div className="flex gap-3">
                 <Train size={18} className="mt-0.5 shrink-0 text-flame" />
                 <p className="text-sm text-slate-ink">
-                  <span className="font-semibold text-ink">By MRT:</span> 7-min walk from
-                  Braddell (NS9) or Toa Payoh (NS19) stations.
+                  <span className="font-semibold text-ink">By MRT:</span> 12–15 min walk from Braddell (NS9) station.
                 </p>
               </div>
               <div className="flex gap-3">
                 <Car size={18} className="mt-0.5 shrink-0 text-flame" />
                 <p className="text-sm text-slate-ink">
-                  <span className="font-semibold text-ink">Parking:</span> Visitor lots in
-                  Braddell Tech (B1–B2). Take lift to Level 4, turn left for #04-11.
+                  <span className="font-semibold text-ink">Parking:</span> Visitor lots in Braddell Tech (B1–B2). Take lift to Level 4, turn left for #04-11.
                 </p>
               </div>
               <div className="flex gap-3">
