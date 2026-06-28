@@ -3,7 +3,6 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Phone, Star, TrendingUp } from 'lucide-react'
 import { site } from '../config/site.js'
 import { images } from '../data/images.js'
-import SectionSeam from './SectionSeam.jsx'
 import HeroLeadForm from './HeroLeadForm.jsx'
 
 export default function Hero() {
@@ -58,10 +57,9 @@ export default function Hero() {
             Lazada, Shopee, and your own store.
           </motion.p>
 
-          {/* ── Inline lead-capture replaces the old link-to-/contact CTA ── */}
+          {/* Inline lead-capture */}
           <motion.div variants={item} className="mt-8 max-w-xl">
             <HeroLeadForm />
-            {/* Secondary actions sit below the form so they don't compete */}
             <div className="mt-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <a
                 href={`tel:${site.phone.tel}`}
@@ -142,7 +140,8 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <SectionSeam position="bottom" />
+      {/* NOTE: bottom SectionSeam removed — the hero now flows directly into the
+          dark StatBand (one dark unit). The seam lives on StatBand instead. */}
     </section>
   )
 }

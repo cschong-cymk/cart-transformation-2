@@ -2,6 +2,7 @@ import { Star, Quote } from 'lucide-react'
 
 export default function TestimonialCard({ t }) {
   return (
+    // Inherits the improved .card surface.
     <figure className="card flex h-full flex-col">
       <div className="flex items-center justify-between">
         <span className="flex" aria-label="5 out of 5 stars">
@@ -21,7 +22,9 @@ export default function TestimonialCard({ t }) {
       </div>
 
       <figcaption className="mt-5 flex items-center gap-3 border-t border-ink/5 pt-4">
-        <span className="grid h-10 w-10 place-items-center rounded-full bg-transform-gradient font-display text-sm font-bold text-white">
+        {/* CHANGED: greyscale initial (was bg-transform-gradient). The avatar is
+            identification, not decoration — the quote and metric read first. */}
+        <span className="grid h-10 w-10 place-items-center rounded-full bg-ink-700 font-display text-sm font-bold text-white">
           {t.name.charAt(0)}
         </span>
         <div className="text-sm">

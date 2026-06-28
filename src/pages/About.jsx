@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { Heart, MapPin, Users, ShieldCheck, ArrowRight } from 'lucide-react'
+import { Heart, MapPin, Users, ShieldCheck, ArrowRight, ExternalLink } from 'lucide-react'
 import { PageTransition, Reveal } from '../components/PageTransition.jsx'
 import Seo from '../components/Seo.jsx'
 import CTASection from '../components/CTASection.jsx'
-import { images } from '../data/images.js'
+import { team } from '../data/team.js'
 
 const values = [
   {
@@ -23,39 +23,15 @@ const values = [
   },
 ]
 
-const team = [
-  {
-    name: 'CS Chong',
-    role: 'CEO · Co-Founder',
-    img: images.csChong,
-    bio: 'Solutions architect behind every conversion system we deploy. Leads scoping and turns messy problems into production-ready automations.',
-  },
-  {
-    name: 'Meng Wee Tan',
-    role: 'Co-Founder · Engineer',
-    img: images.mengWee,
-    bio: 'Two decades across enterprise software, fintech, and AI. Builds the checkout and recovery infrastructure that works in production, not just in demos.',
-  },
-  {
-    name: 'Kevin Chua',
-    role: 'Project Director',
-    img: images.founder2,
-    bio: '15+ years in technology programme management and digital transformation. Keeps every engagement on track from scoping to go-live, with a focus on regulated industries and risk governance across Southeast Asia.',
-  },
-  {
-    name: 'Sarah Nguyen',
-    role: 'E-commerce Lead',
-    img: images.founder3,
-    bio: 'Ten years building and operating e-commerce businesses from the merchant side. She knows what a broken checkout costs because she\'s lived it.',
-  },
-]
-
-
 export default function About() {
   return (
     <PageTransition>
-      <Seo title='About Us — Local E-commerce Conversion Studio' description="Meet Cart Transformation — Singapore's e-commerce conversion specialists. A Flowdaptor venture, built by people who've been merchants themselves." />
-      {/* Intro */}
+      <Seo
+        title="About Us — Local E-commerce Conversion Studio"
+        description="Meet Cart Transformation — Singapore's e-commerce conversion specialists. A Flowdaptor venture, built by people who've been merchants themselves."
+      />
+
+      {/* ── Intro: real faces up top (was a stock photo of strangers) ── */}
       <section className="py-16 md:py-24">
         <div className="container-x grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal>
@@ -67,28 +43,39 @@ export default function About() {
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-slate-soft">
               Cart Transformation grew out of a simple observation: most agencies fix the
-              ads and forget the checkout. We saw the same fixable problems again and
-              again across Singapore's stores — clunky checkouts, silent abandoned carts,
-              revenue quietly leaking at the final step — so we built a studio to fix the
-              part that actually closes the sale.
+              ads and forget the checkout. We kept seeing the same fixable problems across
+              Singapore's stores — clunky checkouts, silent abandoned carts, revenue
+              quietly leaking at the final step — so we built a studio to fix the part that
+              actually closes the sale.
             </p>
             <p className="mt-4 leading-relaxed text-slate-soft">
-              Today we work hands-on with merchants across the island, from home-grown
-              fashion labels to electronics resellers on Lazada and Shopee. We're small,
-              senior, and close to the work — the person who audits your store is the
-              person who fixes it.
+              We're small, senior, and close to the work — the person who audits your store
+              is the person who fixes it. No account managers, no hand-offs, no junior teams
+              running your work while the seniors take the credit.
             </p>
             <Link to="/contact" className="btn-primary mt-8">
               Work with us <ArrowRight size={16} />
             </Link>
           </Reveal>
 
+          {/* Real team headshots as a 2×2 grid — uses the actual /public/assets
+              photos instead of a stock collaboration image. */}
           <Reveal delay={0.1} className="relative">
-            <div
-              className="aspect-[4/5] w-full rounded-[28px] bg-cover bg-center bg-transform-gradient shadow-card"
-              style={{ backgroundImage: `url(${images.team})` }}
-            />
-            <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-cloud-100 p-5 shadow-xl ring-1 ring-ink/5 sm:block">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              {team.slice(0, 4).map((m) => (
+                <div
+                  key={m.name}
+                  className="aspect-square w-full rounded-2xl bg-cloud-200 bg-cover bg-center shadow-card ring-1 ring-ink/5"
+                  style={{ backgroundImage: `url(${m.img})` }}
+                  role="img"
+                  aria-label={`${m.name}, ${m.role}`}
+                />
+              ))}
+            </div>
+            <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-cloud-50 p-5 shadow-xl ring-1 ring-ink/8 sm:block">
+              {/* NOTE: "Est. 2026" reads as brand-new. Fine on its own, but it sits in
+                  tension with "120+ merchants served" elsewhere — make sure the story
+                  you tell across pages is consistent. */}
               <p className="font-mono text-3xl font-bold text-flame">2026</p>
               <p className="text-sm text-slate-soft">a Flowdaptor venture</p>
             </div>
@@ -96,47 +83,44 @@ export default function About() {
         </div>
       </section>
 
-      {/* Origin story */}
-      <section className="py-16 md:py-24">
+      {/* ── Origin: ONE consolidated Flowdaptor section (was two overlapping
+             story sections). Founder-neutral so it can't contradict the team
+             structure below. ── */}
+      <section className="bg-cloud py-16 md:py-24">
         <div className="container-x max-w-3xl">
           <Reveal>
-            <span className="eyebrow">Origin story</span>
+            <span className="eyebrow">A Flowdaptor venture</span>
             <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">
-              A Flowdaptor venture. Founded in Singapore, 2026.
+              Engineering rigour, pointed at one problem
             </h2>
             <p className="mt-6 leading-relaxed text-slate-soft">
-              Cart Transformation is a specialist brand from <strong className="text-ink">Flowdaptor</strong>,
-              a Singapore-based AI automation studio. Where Flowdaptor builds the
-              infrastructure that makes businesses run on AI, Cart Transformation applies
-              that same engineering rigour to one specific problem: the revenue merchants
-              lose between “add to cart” and “order placed”.
+              Cart Transformation is a specialist brand from{' '}
+              <strong className="text-ink">Flowdaptor</strong>, a Singapore-based AI
+              automation studio. Where Flowdaptor builds the infrastructure that makes
+              businesses run on AI, Cart Transformation applies that same rigour to one
+              specific problem: the revenue merchants lose between “add to cart” and “order
+              placed”.
             </p>
             <p className="mt-4 leading-relaxed text-slate-soft">
-              It started because Sarah had spent a decade running e-commerce businesses and
-              knew exactly what a bad checkout costs — not in theory, but in real, daily,
-              measurable lost revenue. Paired with the Flowdaptor team, the combination
-              became obvious: merchant experience plus production-grade AI automation,
-              pointed straight at cart recovery, checkout optimization, and conversion
-              funnels.
-            </p>
-            <p className="mt-4 leading-relaxed text-slate-soft">
-              We're small by design. No account managers, no hand-offs, no junior teams
-              running your work while the seniors take the credit.
+              The combination is deliberate — first-hand merchant experience paired with
+              production-grade automation, aimed squarely at cart recovery, checkout
+              optimization, and conversion funnels. Not demos. Things that hold up in
+              production, on real stores, with real traffic.
             </p>
             <a
               href="https://flowdaptor.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-1.5 font-display font-semibold text-flame hover:text-flame"
+              className="mt-6 inline-flex items-center gap-1.5 font-display font-semibold text-flame hover:text-flame-dark"
             >
-              A Flowdaptor venture · AI automation · Singapore <ArrowRight size={16} />
+              Visit Flowdaptor <ExternalLink size={15} />
             </a>
           </Reveal>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-cloud py-16 md:py-24">
+      {/* ── Values ── */}
+      <section className="py-16 md:py-24">
         <div className="container-x">
           <Reveal className="max-w-2xl">
             <span className="eyebrow">What we stand for</span>
@@ -160,8 +144,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-16 md:py-24">
+      {/* ── Team: clean, uniform cards (square photo → name → role → bio → link) ── */}
+      <section className="bg-cloud py-16 md:py-24">
         <div className="container-x">
           <Reveal className="max-w-2xl">
             <span className="eyebrow">Meet the team</span>
@@ -172,29 +156,45 @@ export default function About() {
               A small team that does the work itself — and answers the phone when you call.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:max-w-3xl">
-             {team.map((m, i) => (
-                <Reveal key={m.name} delay={i * 0.1}>
-                  <div className="card flex flex-col gap-4">
-                      <div className="h-32 w-32 rounded-2xl bg-cover bg-center bg-cloud-200"       style={{ backgroundImage: `url(${m.img})` }}  />
-                  <div>
-                  <h3 className="text-lg font-bold text-ink">{m.name}</h3>
-                  <p className="font-mono text-xs uppercase tracking-wide text-flame">
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {team.map((m, i) => (
+              <Reveal key={m.name} delay={i * 0.08}>
+                <article className="card flex h-full flex-col">
+                  <div
+                    className="aspect-square w-full rounded-xl bg-cloud-200 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${m.img})` }}
+                    role="img"
+                    aria-label={m.name}
+                  />
+                  <h3 className="mt-4 text-lg font-bold text-ink">{m.name}</h3>
+                  <p className="font-mono text-xs uppercase tracking-wide text-slate-soft">
                     {m.role}
                   </p>
-                  <p className="mt-2 text-sm text-slate-soft">{m.bio}</p>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-soft">
+                    {m.bio}
+                  </p>
                   {m.url && (
-                    <p className="mt-2 text-sm text-slate-soft"><a href={m.url} target="_blank" rel="noopener noreferrer">{m.url}</a></p>
+                    <a
+                      href={m.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-flame hover:text-flame-dark"
+                    >
+                      Profile <ExternalLink size={13} />
+                    </a>
                   )}
-              </div>
-            </div>
-          </Reveal>
-          ))}
+                </article>
+              </Reveal>
+            ))}
           </div>
 
-          {/* Community */}
+          {/* Community — KEEP ONLY IF TRUE. Specific claims (free monthly clinics,
+              mentoring at maker markets) are verifiable; if they're aspirational
+              rather than real, cut this block. An unverifiable good-deed claim does
+              more trust damage than no claim at all. */}
           <Reveal delay={0.1}>
-            <div className="mt-12 rounded-3xl bg-flame/8 p-8 ring-1 ring-flame/10 md:p-10">
+            <div className="mt-12 rounded-2xl bg-flame/8 p-8 ring-1 ring-flame/10 md:p-10">
               <h3 className="flex items-center gap-2 font-display text-xl font-bold text-ink">
                 <Heart size={20} className="text-flame" /> In the community
               </h3>

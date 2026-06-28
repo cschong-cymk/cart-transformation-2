@@ -25,9 +25,12 @@ export default function ServiceCard({ service }) {
   const isFree = /free/i.test(service.price)
 
   return (
+    // Inherits the improved .card (cloud-50 surface, 16px radius, ink/8 ring).
     <article className="card group flex flex-col hover:-translate-y-1 hover:shadow-cardHover">
       <div className="flex items-center justify-between">
-        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-flame/10 text-flame transition-colors group-hover:bg-flame group-hover:text-white">
+        {/* CHANGED: hover fills solid flame-dark instead of flat flame — keeps the
+            gradient out of icon chrome (gradient is reserved for the hero h1). */}
+        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-flame/10 text-flame transition-colors group-hover:bg-flame-dark group-hover:text-white">
           <Icon size={22} strokeWidth={2} />
         </span>
         <span
@@ -53,9 +56,10 @@ export default function ServiceCard({ service }) {
         ))}
       </ul>
 
+      {/* flame stays here — this is an interactive link, the legitimate use */}
       <Link
         to="/contact"
-        className="mt-6 inline-flex items-center gap-1.5 font-display text-sm font-semibold text-flame transition-colors hover:text-flame"
+        className="mt-6 inline-flex items-center gap-1.5 font-display text-sm font-semibold text-flame transition-colors hover:text-flame-dark"
       >
         Request this service <ArrowRight size={15} />
       </Link>

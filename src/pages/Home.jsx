@@ -5,9 +5,8 @@ import Hero from '../components/Hero.jsx'
 import StatBand from '../components/StatBand.jsx'
 import ServiceCard from '../components/ServiceCard.jsx'
 import TestimonialCard from '../components/TestimonialCard.jsx'
-import MapSection from '../components/MapSection.jsx'
 import CTASection from '../components/CTASection.jsx'
-import { ReviewSchema } from '../components/Schema.jsx'   // ← new (no-op until SHIP_REVIEW_SCHEMA = true)
+import { ReviewSchema } from '../components/Schema.jsx'
 import { services } from '../data/services.js'
 import { testimonials } from '../data/testimonials.js'
 import SectionSeam from '../components/SectionSeam.jsx'
@@ -129,7 +128,8 @@ export default function Home() {
         </div>
       </section>
 
-      <MapSection />
+      {/* MapSection removed — it lives on /contact, where the address belongs.
+          On the homepage it was a heavy iframe earning little. */}
       <CTASection />
     </PageTransition>
   )
