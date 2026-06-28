@@ -7,6 +7,7 @@ import ServiceCard from '../components/ServiceCard.jsx'
 import TestimonialCard from '../components/TestimonialCard.jsx'
 import MapSection from '../components/MapSection.jsx'
 import CTASection from '../components/CTASection.jsx'
+import { ReviewSchema } from '../components/Schema.jsx'   // ← new (no-op until SHIP_REVIEW_SCHEMA = true)
 import { services } from '../data/services.js'
 import { testimonials } from '../data/testimonials.js'
 import SectionSeam from '../components/SectionSeam.jsx'
@@ -33,7 +34,14 @@ const steps = [
 export default function Home() {
   return (
     <PageTransition>
-      <Seo title='E-commerce Conversion Experts in Singapore' description='Recover abandoned carts, optimize checkout, and grow revenue. Free conversion audit for Singapore e-commerce merchants on Lazada, Shopee, and WooCommerce.' />
+      <Seo
+        title="E-commerce Conversion Experts in Singapore"
+        description="Recover abandoned carts, optimize checkout, and grow revenue. Free conversion audit for Singapore e-commerce merchants on Lazada, Shopee, and WooCommerce."
+      />
+
+      {/* Review + AggregateRating JSON-LD (no-op until reviews are real — see Schema.jsx) */}
+      <ReviewSchema />
+
       <Hero />
       <StatBand />
 
@@ -84,17 +92,13 @@ export default function Home() {
               <Reveal key={s.title} delay={i * 0.1}>
                 <div className="h-full rounded-3xl bg-ink-700/60 p-7 ring-1 ring-white/10">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-sm text-flame-light">
-                      0{i + 1}
-                    </span>
+                    <span className="font-mono text-sm text-flame-light">0{i + 1}</span>
                     <span className="grid h-11 w-11 place-items-center rounded-2xl bg-transform-gradient">
                       <s.icon size={20} />
                     </span>
                   </div>
                   <h3 className="mt-5 text-xl font-bold">{s.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-cloud-200/75">
-                    {s.body}
-                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-cloud-200/75">{s.body}</p>
                 </div>
               </Reveal>
             ))}

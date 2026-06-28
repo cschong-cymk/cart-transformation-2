@@ -3,31 +3,21 @@ import Seo from '../components/Seo.jsx'
 import ServiceCard from '../components/ServiceCard.jsx'
 import CTASection from '../components/CTASection.jsx'
 import SectionSeam from '../components/SectionSeam.jsx'
+import { FaqSchema } from '../components/Schema.jsx'   // ← new
 import { services } from '../data/services.js'
-
-const faqs = [
-  {
-    q: 'How is pricing structured?',
-    a: 'Most projects are fixed-scope with a clear quote up front. Recovery and CX work runs monthly. We always start with a free audit so you know the expected return before committing.',
-  },
-  {
-    q: 'Do you work with Shopify, WooCommerce, and marketplaces?',
-    a: 'Yes. We work across WooCommerce, Shopify, and native Lazada/Shopee storefronts, and we connect them so stock, orders, and pricing stay in sync.',
-  },
-  {
-    q: 'How fast will I see results?',
-    a: 'Checkout and recovery fixes often show measurable lift within the first 2–4 weeks. Most clients hit positive ROI within 30 days, and larger funnel rebuilds compound over a quarter.',
-  },
-  {
-    q: 'Are you based in Singapore?',
-    a: 'Yes — our studio is in Braddell Tech, Toa Payoh. We understand local payment habits, delivery options, and buyer behaviour first-hand.',
-  },
-]
+import { faqs } from '../data/faqs.js'                  // ← shared source; removed inline const
 
 export default function Services() {
   return (
     <PageTransition>
-      <Seo title='E-commerce Services & Pricing' description='Checkout optimization, cart abandonment recovery, WooCommerce development, and conversion audits for Singapore e-commerce stores.' />
+      <Seo
+        title="E-commerce Services & Pricing"
+        description="Checkout optimization, cart abandonment recovery, WooCommerce development, and conversion audits for Singapore e-commerce stores."
+      />
+
+      {/* FAQPage JSON-LD — emitted into <head> at build time */}
+      <FaqSchema />
+
       {/* Page header */}
       <section className="relative overflow-hidden bg-ink py-16 text-white md:py-20">
         <div className="container-x relative z-10">
@@ -56,7 +46,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ — reads from the same faqs.js that FaqSchema uses */}
       <section className="bg-cloud py-16 md:py-24">
         <div className="container-x grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <Reveal>

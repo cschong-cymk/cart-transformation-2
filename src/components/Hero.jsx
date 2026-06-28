@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Phone, ArrowRight, Star, TrendingUp } from 'lucide-react'
+import { Phone, Star, TrendingUp } from 'lucide-react'
 import { site } from '../config/site.js'
 import { images } from '../data/images.js'
 import SectionSeam from './SectionSeam.jsx'
+import HeroLeadForm from './HeroLeadForm.jsx'
 
 export default function Hero() {
   const reduce = useReducedMotion()
@@ -57,16 +58,31 @@ export default function Hero() {
             Lazada, Shopee, and your own store.
           </motion.p>
 
-          <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link to="/contact" className="btn-primary text-base">
-              Book a free audit <ArrowRight size={18} />
-            </Link>
-            <a href={`tel:${site.phone.tel}`} className="btn-ghost border-white/20 bg-white/5 text-white text-base hover:border-flame hover:text-flame-light">
-              <Phone size={18} /> Call {site.phone.display}
-            </a>
+          {/* ── Inline lead-capture replaces the old link-to-/contact CTA ── */}
+          <motion.div variants={item} className="mt-8 max-w-xl">
+            <HeroLeadForm />
+            {/* Secondary actions sit below the form so they don't compete */}
+            <div className="mt-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+              <a
+                href={`tel:${site.phone.tel}`}
+                className="btn-ghost border-white/20 bg-white/5 text-white text-base hover:border-flame hover:text-flame-light"
+              >
+                <Phone size={18} /> Call {site.phone.display}
+              </a>
+              <Link
+                to="/services"
+                className="text-sm font-medium text-cloud-200/70 underline-offset-4 hover:text-flame-light hover:underline"
+              >
+                Or browse our services →
+              </Link>
+            </div>
           </motion.div>
 
-          <motion.div variants={item} className="mt-8 flex items-center gap-4 text-sm text-cloud-200/70">
+          {/* Trust line */}
+          <motion.div
+            variants={item}
+            className="mt-7 flex items-center gap-4 text-sm text-cloud-200/70"
+          >
             <span className="flex">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} size={16} className="fill-flame text-flame" />
@@ -76,7 +92,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Signature: transformation card */}
+        {/* Signature: transformation card — unchanged */}
         <motion.div
           initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
