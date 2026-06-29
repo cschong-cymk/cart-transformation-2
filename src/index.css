@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* font-[450] = slightly heavier than 400, so Inter doesn't read thin on the
+       warm cloud background. Requires Inter on its VARIABLE axis — change the
+       Google Fonts URL in index.html from Inter:wght@400;500;600;700 to
+       Inter:wght@400..700, otherwise 450 snaps back to 400. */
+    @apply bg-cloud text-slate-ink font-body font-[450] antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    @apply outline-none ring-2 ring-flame ring-offset-2 ring-offset-cloud rounded-sm;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 sm:px-6 lg:px-8;
+  }
+
+  /* CHANGED: eyebrow moved off the flame family → slate. Flame is now reserved
+     for interactive elements only, so decorative eyebrows stop reading as links.
+     slate-soft (not slate-mid) keeps AA contrast on the cloud background.
+     Dark sections still override inline with text-flame-light. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-slate-soft;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-display font-medium
+      transition-all duration-200 focus-visible:ring-offset-0;
+  }
+
+  /* btn-primary unchanged — but shadow-cta is now stronger (see config), so the
+     primary CTA is the only flame-shadowed element on the page. */
+  .btn-primary {
+    @apply btn bg-flame px-6 py-3 text-white shadow-cta
+      hover:bg-flame-dark hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  /* CHANGED: ghost no longer shifts to flame text on hover (that made it read as
+     a second accent action). It stays ink-coloured and just deepens its border. */
+  .btn-ghost {
+    @apply btn border border-ink/15 bg-cloud-100 px-6 py-3 text-ink
+      hover:border-ink/30 hover:bg-cloud-50;
+  }
+
+  .btn-dark {
+    @apply btn bg-ink px-6 py-3 text-white hover:bg-ink-700 hover:-translate-y-0.5;
+  }
+
+  /* CHANGED: near-white surface (cloud-50) so cards visibly lift off the cloud
+     page background; radius dropped 24px → 16px (rounded-2xl) for a more
+     polished, less bubbly feel; border slightly stronger. */
+  .card {
+    @apply rounded-2xl bg-cloud-50 p-7 shadow-card ring-1 ring-ink/[0.08] transition-all duration-300;
+  }
+
+  /* NEW: glass card for use on dark (ink) sections — same formula as the hero
+     lead form, now reusable. Apply to process steps, dark CTA overlays, etc. */
+  .card-glass {
+    @apply rounded-2xl bg-white/6 p-7 shadow-glass ring-1 ring-white/10
+      backdrop-blur-sm transition-all duration-300;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* No-JS fallback: pre-rendered HTML ships with Framer Motion's initial
+   inline styles (opacity:0). If scripts never run, force everything visible. */
+.no-js [style*='opacity:0'] {
+  opacity: 1 !important;
+  transform: none !important;
+}
