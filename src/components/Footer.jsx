@@ -22,11 +22,18 @@ const socialIcons = [
 export default function Footer() {
   const year = new Date().getFullYear()
 
+  // Build the legal line from whatever real values exist. If both are empty,
+  // the line is hidden entirely — never ship a placeholder UEN/GST.
+  const legalParts = []
+  if (site.legal?.uen) legalParts.push(`UEN: ${site.legal.uen}`)
+  if (site.legal?.gst) legalParts.push(`GST Reg: ${site.legal.gst}`)
+  const legalLine = legalParts.join(' · ')
+
   return (
     <footer className="relative overflow-hidden bg-ink text-cloud-200">
       <SectionSeam position="top" />
       <div className="container-x relative z-10 grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
-        {/* Brand + NAP name */}
+        {/* Brand + socials */}
         <div>
           <Link to="/" className="flex items-center gap-2.5">
             <LogoMark className="h-7 w-auto text-white" />
@@ -120,31 +127,11 @@ export default function Footer() {
             Company
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
-            <li>
-              <Link to="/services" className="hover:text-flame-light">
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="hover:text-flame-light">
-                About us
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="hover:text-flame-light">
-                Book / Get a quote
-              </Link>
-            </li>
-            <li>
-              <Link to="/privacy" className="hover:text-flame-light">
-                Privacy policy
-              </Link>
-            </li>
-            <li>
-              <Link to="/terms" className="hover:text-flame-light">
-                Terms of service
-              </Link>
-            </li>
+            <li><Link to="/services" className="hover:text-flame-light">Services</Link></li>
+            <li><Link to="/about" className="hover:text-flame-light">About us</Link></li>
+            <li><Link to="/contact" className="hover:text-flame-light">Book / Get a quote</Link></li>
+            <li><Link to="/privacy" className="hover:text-flame-light">Privacy policy</Link></li>
+            <li><Link to="/terms" className="hover:text-flame-light">Terms of service</Link></li>
           </ul>
         </div>
       </div>
@@ -154,7 +141,8 @@ export default function Footer() {
           <p>
             © {year} {site.name}. Serving {site.serviceArea}.
           </p>
-          <p className="font-mono">UEN: 20XXXXXXX · GST Reg: M9-XXXXXXX-X</p>
+          {/* Hidden entirely until real UEN/GST exist in site.legal */}
+          {legalLine && <p className="font-mono">{legalLine}</p>}
         </div>
       </div>
     </footer>
