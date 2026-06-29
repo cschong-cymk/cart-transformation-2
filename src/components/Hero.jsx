@@ -19,14 +19,15 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-ink text-white">
-      {/* Ambient gradient glow */}
+      {/* Ambient glow — pulled back from /30 to /18 and moved away from the
+          bottom edge so it doesn't bleed into the SectionSeam wave below. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full bg-flame/30 blur-[120px]"
+        className="pointer-events-none absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full bg-flame/18 blur-[140px]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-40 -left-20 h-[28rem] w-[28rem] rounded-full bg-flame-light/20 blur-[120px]"
+        className="pointer-events-none absolute -left-20 top-10 h-[28rem] w-[28rem] rounded-full bg-flame-light/12 blur-[140px]"
       />
 
       <div className="container-x relative z-10 grid gap-12 py-16 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -86,11 +87,11 @@ export default function Hero() {
                 <Star key={i} size={16} className="fill-flame text-flame" />
               ))}
             </span>
-            <span>Trusted by 120+ Singapore merchants</span>
+            <span>20+ years combined e-commerce experience</span>
           </motion.div>
         </motion.div>
 
-        {/* Signature: transformation card — unchanged */}
+        {/* Transformation card */}
         <motion.div
           initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -140,8 +141,8 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* NOTE: bottom SectionSeam removed — the hero now flows directly into the
-          dark StatBand (one dark unit). The seam lives on StatBand instead. */}
+      {/* No SectionSeam here — StatBand is also dark (bg-ink), so hero flows
+          directly into it as one seamless dark unit. The wave lives on StatBand. */}
     </section>
   )
 }
