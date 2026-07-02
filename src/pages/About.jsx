@@ -60,7 +60,7 @@ export default function About() {
           <Reveal delay={0.1} className="relative">
             <div className="overflow-hidden rounded-2xl shadow-card ring-1 ring-ink/5">
               <img
-                src="/assets/e-commerce-business-growth.jpg"
+                src="/assets/grow-your-online-store.jpg"
                 alt="E-commerce growth — rising conversion metrics"
                 className="aspect-[4/3] w-full object-cover"
                 loading="lazy"
