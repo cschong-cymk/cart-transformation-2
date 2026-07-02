@@ -57,25 +57,16 @@ export default function About() {
               Work with us <ArrowRight size={16} />
             </Link>
           </Reveal>
-
-          {/* Real team headshots as a 2×2 grid — uses the actual /public/assets
-              photos instead of a stock collaboration image. */}
           <Reveal delay={0.1} className="relative">
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {team.slice(0, 4).map((m) => (
-                <div
-                  key={m.name}
-                  className="aspect-square w-full rounded-2xl bg-cloud-200 bg-cover bg-center shadow-card ring-1 ring-ink/5"
-                  style={{ backgroundImage: `url(${m.img})` }}
-                  role="img"
-                  aria-label={`${m.name}, ${m.role}`}
-                />
-              ))}
+            <div className="overflow-hidden rounded-2xl shadow-card ring-1 ring-ink/5">
+              <img
+                src="/assets/e-commerce-business-growth.jpg"
+                alt="E-commerce growth — rising conversion metrics"
+                className="aspect-[4/3] w-full object-cover"
+                loading="lazy"
+              />
             </div>
             <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-cloud-50 p-5 shadow-xl ring-1 ring-ink/8 sm:block">
-              {/* NOTE: "Est. 2026" reads as brand-new. Fine on its own, but it sits in
-                  tension with "120+ merchants served" elsewhere — make sure the story
-                  you tell across pages is consistent. */}
               <p className="font-mono text-3xl font-bold text-flame">2026</p>
               <p className="text-sm text-slate-soft">a Flowdaptor venture</p>
             </div>
